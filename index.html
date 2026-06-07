@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Habit Bridge — 101 Desires to Transform Your Life</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F4EE;
+  --surface: #FEFCF8;
+  --ink: #0D0B09;
+  --mid: #5C5248;
+  --muted: #9C8E82;
+  --accent: #2D5A3D;
+  --accent2: #8B6914;
+  --gold: #C4952A;
+  --gold-pale: #EDD98A;
+  --green-pale: #D4E8DA;
+  --line: rgba(13,11,9,0.10);
+  --line-strong: rgba(13,11,9,0.18);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0D0F0B;
+    --surface: #151812;
+    --ink: #EEE9DF;
+    --mid: #B0A898;
+    --muted: #6E6258;
+    --accent: #5A9E6E;
+    --accent2: #C4952A;
+    --gold: #C4952A;
+    --gold-pale: #3D2E08;
+    --green-pale: #0E2016;
+    --line: rgba(238,233,223,0.08);
+    --line-strong: rgba(238,233,223,0.14);
+  }
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.65;overflow-x:hidden}
+
+/* NOISE */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;mix-blend-mode:overlay}
+
+.container{max-width:900px;margin:0 auto;padding:0 32px}
+.container--wide{max-width:1200px;margin:0 auto;padding:0 32px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;background:var(--bg);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:0.02em;color:var(--ink);text-decoration:none}
+.nav-cta{font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);background:none;border:1px solid var(--line-strong);padding:9px 22px;cursor:pointer;transition:all .2s;text-decoration:none}
+.nav-cta:hover{background:var(--ink);color:var(--bg)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding-top:80px;position:relative;overflow:hidden}
+.hero-inner{display:flex;flex-direction:column;justify-content:center;padding:80px 32px 60px;max-width:900px;margin:0 auto;width:100%}
+.hero-tag{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:32px;display:flex;align-items:center;gap:12px}
+.hero-tag::before{content:'';display:block;width:32px;height:1px;background:var(--accent)}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,9vw,8rem);font-weight:300;line-height:0.95;letter-spacing:-0.01em;color:var(--ink);margin-bottom:16px}
+.hero-h1 em{font-style:italic;color:var(--accent)}
+.hero-h1 span{display:block}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:300;font-style:italic;color:var(--mid);max-width:520px;margin:28px 0 52px;line-height:1.5}
+.hero-cta-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.btn-buy{display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:16px 40px;border:none;cursor:pointer;transition:all .25s;text-decoration:none;position:relative;overflow:hidden}
+.btn-buy::before{content:'';position:absolute;inset:0;background:var(--ink);transform:translateX(-101%);transition:transform .3s ease}
+.btn-buy:hover::before{transform:translateX(0)}
+.btn-buy span{position:relative;z-index:1}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;color:var(--mid);font-size:13px;font-weight:400;letter-spacing:0.05em;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .2s,border-color .2s;background:none;cursor:pointer;border-top:none;border-left:none;border-right:none}
+.btn-secondary:hover{color:var(--ink);border-color:var(--ink)}
+.price-note{font-size:11px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:20px}
+
+/* hero marquee strip */
+.hero-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:14px 0;background:var(--surface)}
+.strip-track{display:flex;gap:0;animation:marquee 35s linear infinite;white-space:nowrap}
+.strip-track:hover{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.strip-item{display:inline-flex;align-items:center;gap:10px;padding:0 36px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);border-right:1px solid var(--line);white-space:nowrap}
+.strip-item b{color:var(--accent);font-weight:600}
+
+/* ── ABOUT ── */
+.about{padding:120px 0;background:var(--surface);border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+@media(max-width:680px){.about-grid{grid-template-columns:1fr;gap:48px}}
+.about-label{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px}
+.about-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:400;line-height:1.1;margin-bottom:32px}
+.about-h2 em{font-style:italic;color:var(--accent)}
+.about-body p{font-size:1rem;color:var(--mid);line-height:1.8;margin-bottom:16px}
+.about-body p:last-child{margin-bottom:0}
+.big-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;font-style:italic;line-height:1.35;color:var(--ink);border-left:2px solid var(--gold);padding-left:28px}
+
+/* ── AREAS ── */
+.areas{padding:120px 0;background:var(--bg)}
+.areas-header{text-align:center;max-width:600px;margin:0 auto 64px}
+.areas-header .about-label{margin-bottom:12px}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:400;line-height:1.1}
+.section-title em{font-style:italic;color:var(--accent)}
+.areas-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+@media(max-width:800px){.areas-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.areas-grid{grid-template-columns:1fr}}
+.area-tile{background:var(--surface);padding:36px 20px;text-align:center;transition:background .2s;display:flex;flex-direction:column;align-items:center;gap:10px}
+.area-tile:hover{background:var(--green-pale)}
+.area-icon{font-size:26px;line-height:1}
+.area-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--ink)}
+.area-n{font-size:10px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;font-weight:500}
+
+/* ── SYSTEM ── */
+.system{padding:120px 0;background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.system-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:64px;background:var(--line)}
+@media(max-width:640px){.system-grid{grid-template-columns:1fr}}
+.system-card{background:var(--bg);padding:48px 40px;transition:background .2s}
+.system-card:hover{background:var(--green-pale)}
+.sys-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:var(--gold);opacity:.25;line-height:1;margin-bottom:20px}
+.sys-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);margin-bottom:12px}
+.sys-body{font-size:.9rem;color:var(--mid);line-height:1.7}
+@media(max-width:640px){.system-card{padding:36px 28px}}
+
+/* ── DESIRES ── */
+.desires{padding:120px 0;background:var(--bg)}
+.desires-intro{text-align:center;max-width:560px;margin:0 auto 64px}
+.desires-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);margin-top:0}
+@media(max-width:720px){.desires-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.desires-grid{grid-template-columns:1fr}}
+.d-card{background:var(--surface);padding:32px 28px;position:relative;transition:background .2s}
+.d-card:hover{background:var(--green-pale)}
+.d-num{position:absolute;top:14px;right:18px;font-family:'Cormorant Garamond',serif;font-size:.8rem;color:var(--muted);font-weight:600}
+.d-cat{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px}
+.d-text{font-family:'Cormorant Garamond',serif;font-size:1.1rem;line-height:1.4;color:var(--ink)}
+.d-text strong{color:var(--accent);font-style:italic}
+.d-card.featured{background:var(--accent);border:1px solid var(--accent)}
+.d-card.featured .d-cat{color:rgba(255,255,255,.6)}
+.d-card.featured .d-text{color:#fff}
+.d-card.featured .d-num{color:rgba(255,255,255,.4)}
+.d-card.featured:hover{background:var(--ink)}
+
+/* ── RULES ── */
+.rules{padding:120px 0;background:var(--ink);color:var(--bg)}
+.rules .about-label{color:var(--gold)}
+.rules .section-title{color:var(--bg)}
+.rules .section-title em{color:var(--gold)}
+.rules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 60px;margin-top:64px}
+@media(max-width:600px){.rules-grid{grid-template-columns:1fr;gap:28px}}
+.rule{display:flex;gap:20px}
+.r-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--gold);opacity:.3;line-height:1;flex-shrink:0;width:36px}
+.r-body{font-size:.9rem;color:rgba(238,233,223,.6);line-height:1.7}
+.r-body strong{color:var(--bg);font-weight:500}
+
+/* ── RITUAL ── */
+.ritual{padding:120px 0;background:var(--surface);border-bottom:1px solid var(--line)}
+.ritual-steps{margin-top:64px;display:flex;flex-direction:column;gap:1px;background:var(--line)}
+.r-step{display:flex;gap:40px;align-items:flex-start;padding:44px 48px;background:var(--bg);transition:background .2s}
+.r-step:hover{background:var(--green-pale)}
+.rs-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold);opacity:.2;line-height:1;flex-shrink:0;width:48px;margin-top:-4px}
+.rs-body h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:8px}
+.rs-body p{font-size:.9rem;color:var(--mid);max-width:480px;line-height:1.7}
+@media(max-width:580px){.r-step{padding:32px 24px;gap:20px}}
+
+/* ── FINAL CTA ── */
+.final-cta{padding:140px 32px;background:var(--accent);text-align:center;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(255,255,255,.06) 0%,transparent 70%)}
+.cta-eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:500;margin-bottom:24px}
+.cta-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,6rem);font-weight:300;color:#fff;line-height:1;margin-bottom:20px;position:relative}
+.cta-h2 em{font-style:italic}
+.cta-sub{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;color:rgba(255,255,255,.65);margin-bottom:56px;position:relative}
+.btn-buy-white{display:inline-flex;align-items:center;gap:12px;background:#fff;color:var(--accent);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:18px 52px;border:none;cursor:pointer;transition:all .25s;position:relative}
+.btn-buy-white:hover{background:var(--ink);color:#fff}
+.cta-note{font-size:11px;color:rgba(255,255,255,.4);margin-top:24px;letter-spacing:.1em;text-transform:uppercase;position:relative}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);padding:40px 32px;text-align:center;border-top:1px solid rgba(255,255,255,.05)}
+footer p{font-size:.8rem;color:rgba(238,233,223,.25);letter-spacing:.05em}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+.reveal:nth-child(2){transition-delay:.08s}
+.reveal:nth-child(3){transition-delay:.16s}
+.reveal:nth-child(4){transition-delay:.24s}
+.reveal:nth-child(5){transition-delay:.32s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">The Habit Bridge</a>
+  <a class="nav-cta" data-gumroad-action="buy">Get the workbook →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag reveal">Personal Growth Workbook</div>
+    <h1 class="hero-h1 reveal">
+      <span>The</span>
+      <span>Habit</span>
+      <span><em>Bridge</em></span>
+    </h1>
+    <p class="hero-sub reveal">101 Desires to Transform Your Life — one habit at a time.</p>
+    <div class="hero-cta-row reveal">
+      <a class="btn-buy" data-gumroad-action="buy">
+        <span>I want this</span>
+        <span>— <span data-gumroad-field="price"></span></span>
+      </a>
+      <button class="btn-secondary" onclick="document.getElementById('what').scrollIntoView({behavior:'smooth'})">See what's inside ↓</button>
+    </div>
+    <p class="price-note reveal">Digital PDF · Instant download · Light &amp; dark friendly</p>
+  </div>
+  <div class="hero-strip">
+    <div class="strip-track">
+      <span class="strip-item"><b>101</b> Desires</span>
+      <span class="strip-item"><b>10</b> Life Areas</span>
+      <span class="strip-item"><b>3</b> Habits per Desire</span>
+      <span class="strip-item">Immediate Actions</span>
+      <span class="strip-item">Specific Tools</span>
+      <span class="strip-item">The Ritual System</span>
+      <span class="strip-item">10 Writing Rules</span>
+      <span class="strip-item">Personal Pages</span>
+      <span class="strip-item"><b>101</b> Desires</span>
+      <span class="strip-item"><b>10</b> Life Areas</span>
+      <span class="strip-item"><b>3</b> Habits per Desire</span>
+      <span class="strip-item">Immediate Actions</span>
+      <span class="strip-item">Specific Tools</span>
+      <span class="strip-item">The Ritual System</span>
+      <span class="strip-item">10 Writing Rules</span>
+      <span class="strip-item">Personal Pages</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="what">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <p class="about-label reveal">The Problem</p>
+        <h2 class="about-h2 reveal">You don't lack motivation.<br>You lack <em>architecture.</em></h2>
+        <div class="about-body reveal">
+          <p>Have you ever written a goal and then forgotten why you wanted it? The real issue isn't willpower. It's that no one has given you a tool that bridges <strong>who you are today</strong> with <strong>who you want to become.</strong></p>
+          <p>The secret isn't "doing more." It's becoming the kind of person who has already achieved those results. That transformation doesn't happen through heroic effort — it's built with precision, like a construction site.</p>
+          <p>Every habit is a brick. Laid consistently, it transforms desire into permanent, solid reality.</p>
+        </div>
+      </div>
+      <blockquote class="big-quote reveal">
+        "Every great journey begins with a desire brave enough to be written down."
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas">
+  <div class="container">
+    <div class="areas-header">
+      <p class="about-label reveal">The Content</p>
+      <h2 class="section-title reveal">101 desires across<br><em>10 areas of life</em></h2>
+    </div>
+  </div>
+  <div class="container--wide">
+    <div class="areas-grid">
+      <div class="area-tile reveal"><div class="area-icon">💪</div><div class="area-name">Health</div><div class="area-n">10 desires</div></div>
+      <div class="area-tile reveal"><div class="area-icon">🏡</div><div class="area-name">Family</div><div class="area-n">10 desires</div></div>
+      <div class="area-tile reveal"><div class="area-icon">🌱</div><div class="area-name">Personal Growth</div><div class="area-n">10 desires</div></div>
+      <div class="area-tile reveal"><div class="area-icon">⚡</div><div class="area-name">Sport</div><div class="area-n">10 desires</div></div>
+      <div class="area-tile reveal"><div class="area-icon">💼</div><div class="area-name">Work</div><div class="area-n">10 desires</div></div>
+      <div class="area-tile reveal"><div class="area-icon">🤝</div><div class="area-name">Friendship</div><div class="area-n">10 desires</div></div>
+      <div class="area-tile reveal"><div class="area-icon">💰</div><div class="area-name">Money</div><div class="area-n">10 desires</div></div>
+      <div class="area-tile reveal"><div class="area-icon">🎨</div><div class="area-name">Hobbies</div><div class="area-n">10 desires</div></div>
+      <div class="area-tile reveal"><div class="area-icon">✨</div><div class="area-name">Objects</div><div class="area-n">10 desires</div></div>
+      <div class="area-tile reveal"><div class="area-icon">🙏</div><div class="area-name">Gratitude</div><div class="area-n">10 + 1 desires</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEM -->
+<section class="system">
+  <div class="container">
+    <p class="about-label reveal">For every desire, you get</p>
+    <h2 class="section-title reveal">Behavioral engineering<br><em>applied to real life</em></h2>
+    <div class="system-grid">
+      <div class="system-card reveal">
+        <div class="sys-num">01</div>
+        <div class="sys-title">The Why</div>
+        <p class="sys-body">The deep motivation that keeps you grounded even on the hardest days — when initial enthusiasm fades and willpower alone isn't enough.</p>
+      </div>
+      <div class="system-card reveal">
+        <div class="sys-num">02</div>
+        <div class="sys-title">The 3 Key Habits</div>
+        <p class="sys-body">Concrete behaviors to integrate into your daily routine. Minimal, systematic gestures that — repeated over time — redefine your identity.</p>
+      </div>
+      <div class="system-card reveal">
+        <div class="sys-num">03</div>
+        <div class="sys-title">Specific Tools</div>
+        <p class="sys-body">Exactly what to use: apps, journals, techniques, resources. No vagueness. Just tested, practical tools ready to deploy.</p>
+      </div>
+      <div class="system-card reveal">
+        <div class="sys-num">04</div>
+        <div class="sys-title">Immediate Actions</div>
+        <p class="sys-body">What you can do today to start. Not tomorrow. Not when you're ready. Now. Because the desire doesn't wait for you — it prepares you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIRES PREVIEW -->
+<section class="desires">
+  <div class="container">
+    <div class="desires-intro">
+      <p class="about-label reveal">A glimpse inside</p>
+      <h2 class="section-title reveal">Some of the<br><em>101 desires</em></h2>
+    </div>
+  </div>
+  <div class="container--wide">
+    <div class="desires-grid">
+      <div class="d-card reveal">
+        <div class="d-num">01</div>
+        <div class="d-cat">Health</div>
+        <div class="d-text"><strong>I want</strong> to have more energy every single day</div>
+      </div>
+      <div class="d-card reveal">
+        <div class="d-num">21</div>
+        <div class="d-cat">Personal Growth</div>
+        <div class="d-text"><strong>I want</strong> to read twenty books a year</div>
+      </div>
+      <div class="d-card reveal">
+        <div class="d-num">41</div>
+        <div class="d-cat">Work</div>
+        <div class="d-text"><strong>I want</strong> to have a job I truly love</div>
+      </div>
+      <div class="d-card reveal">
+        <div class="d-num">51</div>
+        <div class="d-cat">Friendship</div>
+        <div class="d-text"><strong>I want</strong> to have sincere and loyal friends</div>
+      </div>
+      <div class="d-card reveal">
+        <div class="d-num">61</div>
+        <div class="d-cat">Money</div>
+        <div class="d-text"><strong>I want</strong> to have the financial freedom I desire</div>
+      </div>
+      <div class="d-card featured reveal">
+        <div class="d-num">101</div>
+        <div class="d-cat">Final Desire</div>
+        <div class="d-text"><strong>I want</strong> to be happy every single day</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section class="rules">
+  <div class="container">
+    <p class="about-label reveal">The 10 Rules</p>
+    <h2 class="section-title reveal">How to write desires<br><em>that actually work</em></h2>
+    <div class="rules-grid">
+      <div class="rule reveal"><div class="r-num">01</div><div class="r-body"><strong>Start with "I WANT"</strong> — expressing will is more powerful than "I wish" or "I'd like".</div></div>
+      <div class="rule reveal"><div class="r-num">02</div><div class="r-body"><strong>Never use negation</strong> — always write in affirmative form, no "not", "never", or "without".</div></div>
+      <div class="rule reveal"><div class="r-num">03</div><div class="r-body"><strong>Keep it brief</strong> — maximum 14 words including "I want" and punctuation.</div></div>
+      <div class="rule reveal"><div class="r-num">04</div><div class="r-body"><strong>No specific people</strong> — avoid desires involving the feelings or actions of named individuals.</div></div>
+      <div class="rule reveal"><div class="r-num">05</div><div class="r-body"><strong>No comparisons</strong> — write without measuring yourself against others.</div></div>
+      <div class="rule reveal"><div class="r-num">06</div><div class="r-body"><strong>Avoid repetition</strong> — each desire must be unique, not a variant of another.</div></div>
+      <div class="rule reveal"><div class="r-num">07</div><div class="r-body"><strong>Don't ask for money directly</strong> — ask for what you want to do or get with it.</div></div>
+      <div class="rule reveal"><div class="r-num">08</div><div class="r-body"><strong>Only for you</strong> — don't include things that are mainly about other people.</div></div>
+      <div class="rule reveal"><div class="r-num">09</div><div class="r-body"><strong>Precise terms</strong> — write "house" not "little house", "car" not "little car".</div></div>
+      <div class="rule reveal"><div class="r-num">10</div><div class="r-body"><strong>Dream big</strong> — don't limit yourself to small things. Include grand, detailed ambitions.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RITUAL -->
+<section class="ritual">
+  <div class="container">
+    <p class="about-label reveal">The system</p>
+    <h2 class="section-title reveal">The 101 Desires<br><em>Ritual</em></h2>
+    <p style="color:var(--mid);max-width:500px;margin-top:16px" class="reveal">A 5-step method to write, select, and activate your desires — and build the bridge to your ideal life.</p>
+    <div class="ritual-steps">
+      <div class="r-step reveal">
+        <div class="rs-num">1</div>
+        <div class="rs-body"><h4>Prepare two notebooks</h4><p>One for drafting, one for the final list. The ritual of handwriting activates the mind differently than typing.</p></div>
+      </div>
+      <div class="r-step reveal">
+        <div class="rs-num">2</div>
+        <div class="rs-body"><h4>Write 150 desires in draft</h4><p>Following all 10 rules. Write without filtering — selection comes later.</p></div>
+      </div>
+      <div class="r-step reveal">
+        <div class="rs-num">3</div>
+        <div class="rs-body"><h4>Select your best 101</h4><p>Copy them carefully into your clean notebook. This list is the architect's blueprint before the building begins.</p></div>
+      </div>
+      <div class="r-step reveal">
+        <div class="rs-num">4</div>
+        <div class="rs-body"><h4>Read every day for a year</h4><p>About 5 minutes daily. Daily reading isn't a chore — it's the fuel that keeps the engine running.</p></div>
+      </div>
+      <div class="r-step reveal">
+        <div class="rs-num">5</div>
+        <div class="rs-body"><h4>Celebrate and replace</h4><p>When a desire comes true, mark it and replace it with a reserve one. Every fulfillment proves the bridge works.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <p class="cta-eyebrow reveal">Start today</p>
+  <h2 class="cta-h2 reveal">Build the bridge.<br><em>Cross it.</em></h2>
+  <p class="cta-sub reveal">You don't need to be ready. The desire prepares you.</p>
+  <a class="btn-buy-white" data-gumroad-action="buy">
+    I want this ↗
+  </a>
+  <p class="cta-note reveal">Digital PDF · Instant download · Satisfaction guaranteed</p>
+</section>
+
+<footer>
+  <p>© The Habit Bridge &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp; Sold on Gumroad</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
